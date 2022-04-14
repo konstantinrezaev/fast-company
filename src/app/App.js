@@ -10,13 +10,11 @@ function App() {
     };
     const handleToggleBookMark = (id) => {
         setUsers(
-            users.filter((user) => {
-                if (user._id === id) {
-                    user.bookmark = !user.bookmark;
-                    return user;
-                }
-                return user;
-            })
+            users.map((user) =>
+                user._id === id
+                    ? { ...user, bookmark: !user.bookmark }
+                    : { ...user }
+            )
         );
     };
     return (
