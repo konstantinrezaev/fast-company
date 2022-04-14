@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
 
 const SearchStatus = ({ length }) => {
     const renderPhrase = () => {
         const count = length;
         if (count === 0) {
-            return 'Никто с тобой не тусанёт';
+            return "Никто с тобой не тусанёт";
         } else if (count === 2 || count === 3 || count === 4) {
             return `${count} человека тусанут с тобой сегодня`;
         } else {
@@ -15,13 +16,16 @@ const SearchStatus = ({ length }) => {
         <h2>
             <span
                 className={
-                    length === 0 ? 'badge bg-danger' : 'badge bg-primary'
+                    length === 0 ? "badge bg-danger" : "badge bg-primary"
                 }
             >
                 {renderPhrase()}
             </span>
         </h2>
     );
+};
+SearchStatus.propTypes = {
+    length: PropTypes.number.isRequired
 };
 
 export default SearchStatus;
