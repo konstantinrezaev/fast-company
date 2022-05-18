@@ -5,7 +5,10 @@ const TableHeader = ({ onSort, selectedSort, columns }) => {
     const [arrowDirection, setArrowDirection] = useState("");
     const handleSort = (item) => {
         if (selectedSort.path === item) {
-            onSort({ ...selectedSort, order: selectedSort.order === "asc" ? "desc" : "asc" });
+            onSort({
+                ...selectedSort,
+                order: selectedSort.order === "asc" ? "desc" : "asc"
+            });
         } else {
             onSort({ path: item, order: "asc" });
         }
@@ -13,10 +16,9 @@ const TableHeader = ({ onSort, selectedSort, columns }) => {
     };
 
     const Arrow = () => {
-        return (
-            selectedSort.order === "asc" ? <i className="bi bi-caret-up-fill"></i> : <i className="bi bi-caret-down-fill"></i>
-        );
+        return (selectedSort.order === "asc" ? <i className="bi bi-caret-up-fill"></i> : <i className="bi bi-caret-down-fill"></i>);
     };
+
     return (
         <thead>
             <tr>
@@ -32,13 +34,15 @@ const TableHeader = ({ onSort, selectedSort, columns }) => {
                         scope="col"
                     >
                         {columns[column].name}
-                        {arrowDirection === columns[column].path ? <Arrow/> : null}
+                        {arrowDirection === columns[column].path
+                            ? (
+                                <Arrow />
+                            )
+                            : null}
                     </th>
-
                 ))}
             </tr>
         </thead>
-
     );
 };
 
